@@ -27,7 +27,7 @@ The dimension of the first is state_size * 256, the second is 256 * 256 using Re
 ### Critic Neural Network
 The neural network defined in model.py has 3 fully connected layers.
 The first layer has a size of state_size * 256, the second has a size of (256 + action_size) * 256, the third 256 * 256 and a final layer with a size of 256 * 1.
-All the layers expect the final one use leaky_relu activation function.    
+All the layers except the final one use leaky_relu activation function.    
 
 ## Plot of rewards
 
