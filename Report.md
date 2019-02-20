@@ -22,11 +22,12 @@ Another technique called soft update is used: Instead of copying the weights of 
 
 ### Actor Neural Network
 The neural network defined in model.py has 3 fully connected layers.
-The dimension of the first is state_size * 128, the second is 128 * 128 using Relu activation function for both and the third 128 * action_size.
+The dimension of the first is state_size * 256, the second is 256 * 256 using Relu activation function for both and the third 256 * action_size using tanh activation function.
 
 ### Critic Neural Network
 The neural network defined in model.py has 3 fully connected layers.
-The dimension of the first is state_size * 128, the second is 128 * 128 using Relu activation function for both and the third 128 * action_size.
+The first layer has a size of state_size * 256, the second has a size of (256 + action_size) * 256, the third 256 * 256 and a final layer with a size of 256 * 1.
+All the layers expect the final one use leaky_relu activation function.    
 
 ## Plot of rewards
 
