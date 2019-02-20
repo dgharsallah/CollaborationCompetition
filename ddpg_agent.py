@@ -16,7 +16,6 @@ TAU = 1e-3              # for soft update of target parameters
 LR_ACTOR = 1e-4         # learning rate of the actor
 LR_CRITIC = 1e-4        # learning rate of the critic
 WEIGHT_DECAY = 0        # L2 weight decay
-UPDATE_EVERY = 1        # how many steps to take before updating target networks
 
 #device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 device = torch.device("cpu")
@@ -24,7 +23,7 @@ device = torch.device("cpu")
 class Agent():
     """Interacts with and learns from the environment."""
     
-    def __init__(self, state_size, action_size, random_seed, num_agents,filename_actor=None,filename_critic=None):
+    def __init__(self, state_size, action_size, random_seed, num_agents):
         """Initialize an Agent object.
         
         Params
@@ -48,16 +47,6 @@ class Agent():
         self.critic_local = Critic(state_size, action_size, random_seed).to(device)
         self.critic_target = Critic(state_size, action_size, random_seed).to(device)
         self.critic_optimizer = optim.Adam(self.critic_local.parameters(), lr=LR_CRITIC, weight_decay=WEIGHT_DECAY)
-
-        if filename_actor:
-            weights = torch.load(filename_actor)
-            self.actor_local.load_state_dict(weights)
-            self.actor_target.load_state_dict(weights)        
-        
-        if filename_critic:
-            weights = torch.load(filename_critic)
-            self.critic_local.load_state_dict(weights)
-            self.critic_target.load_state_dict(weights)
 
         # Noise process
         self.noise = OUNoise(action_size, random_seed)
@@ -157,7 +146,6 @@ class OUNoise:
         self.theta = theta
         self.sigma = sigma
         self.seed = random.seed(seed)
-        self.size = size
         self.reset()
 
     def reset(self):
