@@ -73,9 +73,6 @@ class Agent():
         with torch.no_grad():
             for i in range(self.num_agents):
                 actions.append(self.actor_local(states[i]).cpu().data.numpy())
-            # for agent_num, state in enumerate(states):
-            #     action = self.actor_local(state).cpu().data.numpy()
-            #     actions[agent_num, :] = action
         self.actor_local.train()
         if add_noise:
             for i in range(self.num_agents):
