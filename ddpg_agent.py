@@ -145,6 +145,7 @@ class OUNoise:
         self.mu = mu * np.ones(size)
         self.theta = theta
         self.sigma = sigma
+        self.size = size
         self.seed = random.seed(seed)
         self.reset()
 
