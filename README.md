@@ -24,7 +24,7 @@ The task is episodic, and in order to solve the environment, your agents must ge
 The environment is considered solved, when the average (over 100 episodes) of those **scores** is at least +0.5.
 
 ### Getting Started
-1. Clone the repo `git clone https://github.com/dhaw92/CollaborationCompetition`
+1. Clone the repo `git clone https://github.com/dgharsallah/CollaborationCompetition`
 2. Create a conda environment and install the required packages
 ```bash
 conda create --name cc python=3.6
